@@ -1,0 +1,5 @@
+jtype: Flow
+executors:
+  - name: sentencizer
+    uses: jinahub://Sentencizer
+    install_reqirements: True

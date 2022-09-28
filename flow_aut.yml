@@ -1,0 +1,39 @@
+jtype: Flow
+version: '1'
+with: {}
+executors:
+- name: encoder
+  jcloud:
+    resources:
+      cpu: 2
+      memory: 8G
+      gpu: 2
+  polling: "ANY"
+  uses: jinahub+docker://TransformerTorchEncoder/latest
+  port: 49831
+  upload_files: []
+  port_monitoring: 59977
+  install_requirements: true
+- name: indexer
+  polling: "ANY"
+  uses: jinahub+docker://AnnLiteIndexer/latest
+  uses_with:
+    columns:
+    - - supplier
+      - str
+    - - price
+      - float
+    - - attr_t_product_type
+      - str
+    - - attr_t_product_colour
+      - str
+    n_dim: 768
+  jcloud:
+    resources:
+      storage: 
+      type: ebs
+      size: 10G
+  port: 62762
+  upload_files: []
+  port_monitoring: 52943
+  install_requirements: true

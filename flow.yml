@@ -1,0 +1,8 @@
+jtype: Flow
+executors:
+- name: encoder
+  uses: jinahub://TransformerTorchEncoder
+  install_reqirements: True
+- name: indexer
+  uses: jinahub://SimpleIndexer
+  install_reqirements: True

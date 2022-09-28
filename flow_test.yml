@@ -1,0 +1,4 @@
+jtype: Flow
+executors:
+  - name: sentencizer
+    uses: jinahub+docker://Sentencizer
